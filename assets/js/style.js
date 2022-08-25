@@ -1,12 +1,15 @@
 $(document).ready(function() {
+
     function highlight(word, query) {
         let check = new RegExp(query, "ig")
         return word.toString().replace(check, function(matchedText) {
             return "<u style='background-color: yellow'>" + matchedText + "</u>"
         })
     }
+
     $("#result-list").hide()
     $("#list").hide()
+
     $(".search-input").keyup(function() {
         let search = $(this).val()
         let results = ""
@@ -16,6 +19,7 @@ $(document).ready(function() {
         } else {
             $(".search-input").removeClass("search").addClass("arrow")
         }
+
         $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", s: search }, function(data) {
             if (data.Search !== undefined) {
                 $.each(data.Search, function(index, value) {
@@ -37,6 +41,7 @@ $(document).ready(function() {
                                 results += '</div>'
                                 results += "</div>"
                                 $("#results").html(results)
+                                
                                 if (/Mobi|Android/i.test(navigator.userAgent)) {
                                     $("#results").children(".result").eq(1).hide();
                                 } else {
@@ -50,6 +55,7 @@ $(document).ready(function() {
             }
         });
     });
+    
     $("#show-more").click(function(e) {
         e.preventDefault()
         var search = $(".search-input").val()
@@ -91,6 +97,7 @@ $(document).ready(function() {
             }
         });
     });
+
     $("#searchAgain").click(function() {
         $("#search").show()
         $("#list").hide()
