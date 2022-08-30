@@ -27,16 +27,16 @@ $(document).ready(function() {
                         $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", i: value.imdbID }, function(movieData) {
                             if (movieData) {
                                 results += '<div class="result row p-1"><a href="single-repo.html"/a>'
-                                results += '<div class="col-sm-5"><img src=' + movieData.Poster + ' style="width: 170px; height: 250px;" /></div>'
+                                results += '<div class="col-sm-5" id="movie-poster"><img src=' + movieData.Poster + ' style="width: 170px; height: 250px;" /></div>'
                                 results += '<div class="col-sm-7 text-left">'
-                                results += '<div class="movie-title">'+ highlight(movieData.Title, $(".search-input").val()) +' ('+ movieData.Year +')</div>'
-                                results += '<div class="rating-div"><span class="h4 rating">'+ movieData.imdbRating +'</span>/10</div>'
+                                results += '<div class="movie-title" id="movie-title">'+ highlight(movieData.Title, $(".search-input").val()) +' ('+ movieData.Year +')</div>'
+                                results += '<div class="rating-div" id="movie-rating"><span class="h4 rating">'+ movieData.imdbRating +'</span>/10</div>'
                                 results += '<div class="my-3">'
-                                results += '<div>Language: '+ movieData.Language + '</div>'
-                                results += '<div>Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="single-repo.html">Show All »</a></div>'
+                                results += '<div id="language">Language: '+ movieData.Language + '</div>'
+                                results += '<div id="actors">Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="single-repo.html">Show All »</a></div>'
                                 results += '</div>'
                                 results += '<div class="my-3">'
-                                results += '<div>'+ movieData.Plot.slice(0, 100) + '... <a href="single-repo.html">Details »</a></div>'
+                                results += '<div id="plot">'+ movieData.Plot.slice(0, 100) + '... <a href="single-repo.html">Details »</a></div>'
                                 results += '</div>'
                                 results += '</div>'
                                 results += "</div>"
