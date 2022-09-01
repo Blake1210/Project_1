@@ -1,15 +1,13 @@
+// 9:05
 $(document).ready(function() {
-
     function highlight(word, query) {
         let check = new RegExp(query, "ig")
         return word.toString().replace(check, function(matchedText) {
-            return matchedText 
+            return "<u style='background-color: yellow'>" + matchedText + "</u>"
         })
     }
-
     $("#result-list").hide()
     $("#list").hide()
-
     $(".search-input").keyup(function() {
         let search = $(this).val()
         let results = ""
@@ -19,33 +17,27 @@ $(document).ready(function() {
         } else {
             $(".search-input").removeClass("search").addClass("arrow")
         }
-
         $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", s: search }, function(data) {
             if (data.Search !== undefined) {
                 $.each(data.Search, function(index, value) {
                     if (index < 2) {
                         $.getJSON("https://www.omdbapi.com/?", { apikey: "fd161998", i: value.imdbID }, function(movieData) {
                             if (movieData) {
-                                results += '<div class="result row p-1" id="result">'
-                                results += '<div class="col-sm-5" id="movie-poster"><img src=' + movieData.Poster + ' style="width: 170px; height: 250px;" /></div>'
+                                results += '<div class="result row p-1">'
+                                results += '<div class="col-sm-5"><img src=' + movieData.Poster + ' style="width: 170px; height: 250px;" /></div>'
                                 results += '<div class="col-sm-7 text-left">'
-                                results += '<div class="movie-title" id="movie-title">'+ highlight(movieData.Title, $(".search-input").val()) +' ('+ movieData.Year +')</div>'
-                                results += '<div class="rating-div" id="movie-rating"><span class="h4 rating">'+ movieData.imdbRating +'</span>/10</div>'
+                                results += '<div class="movie-title">'+ highlight(movieData.Title, $(".search-input").val()) +' ('+ movieData.Year +')</div>'
+                                results += '<div class="rating-div"><span class="h4 rating">'+ movieData.imdbRating +'</span>/10</div>'
                                 results += '<div class="my-3">'
-                                results += '<div id="language">Language: '+ movieData.Language + '</div>'
-                                results += '<div id="actors">Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="#" id="button">Show All »</a></div>'
+                                results += '<div>Language: '+ movieData.Language + '</div>'
+                                results += '<div>Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="#">Show All »</a></div>'
                                 results += '</div>'
                                 results += '<div class="my-3">'
-                                results += '<div id="plot">'+ movieData.Plot.slice(0, 100) + '... <a href="single-repo.html">Details »</a></div>'
+                                results += '<div>'+ movieData.Plot.slice(0, 100) + '... <a href="#">Details »</a></div>'
                                 results += '</div>'
                                 results += '</div>'
                                 results += "</div>"
                                 $("#results").html(results)
-                                
-                                var cast = document.getElementById("button")
-                                console.log(cast)
-                                cast.addEventListener("click", testing);
-
                                 if (/Mobi|Android/i.test(navigator.userAgent)) {
                                     $("#results").children(".result").eq(1).hide();
                                 } else {
@@ -59,7 +51,6 @@ $(document).ready(function() {
             }
         });
     });
-    
     $("#show-more").click(function(e) {
         e.preventDefault()
         var search = $(".search-input").val()
@@ -81,14 +72,14 @@ $(document).ready(function() {
                             listResults += '<div class="row">'
                             listResults += '<div class="col-md-6"><img src="' + listMovieData.Poster + '" style="width: 100%;" /></div>'
                             listResults += '<div class="col-md-6 text-left">'
-                            listResults += '<div class="movie-title" id="movie-title">'+ listMovieData.Title, $(".search-input").val() +' ('+ listMovieData.Year +')</div>'
-                            listResults += '<div class="rating-div" id="rating">'+ listMovieData.imdbRating +'/10 /div>'
+                            listResults += '<div class="movie-title">'+ highlight(listMovieData.Title, $(".search-input").val()) +' ('+ listMovieData.Year +')</div>'
+                            listResults += '<div class="rating-div"><span class="h4 rating">'+ listMovieData.imdbRating +'</span>/10</div>'
                             listResults += '<div class="my-3">'
-                            listResults += '<div id="langauge">Language: '+ listMovieData.Language + '</div>'
+                            listResults += '<div>Language: '+ listMovieData.Language + '</div>'
                             listResults += '<div>Stars: '+ listMovieData.Actors.split(",").slice(0, 3) + ' | <a href="#">Show All »</a></div>'
                             listResults += '</div>'
                             listResults += '<div class="my-3">'
-                            listResults += '<div id="plot">'+ listMovieData.Plot.slice(0, 100) + '... <a href="#">Details »</a></div>'
+                            listResults += '<div>'+ listMovieData.Plot.slice(0, 100) + '... <a href="#">Details »</a></div>'
                             listResults += '</div>'
                             listResults += '</div>' // col-6 end
                             listResults += "</div>" // row end
@@ -101,7 +92,6 @@ $(document).ready(function() {
             }
         });
     });
-
     $("#searchAgain").click(function() {
         $("#search").show()
         $("#list").hide()
@@ -109,39 +99,3 @@ $(document).ready(function() {
         $(".search-input").val("")
     });
 });
-
-
-
-function testing(pleaseWork) {
-    var title = document.getElementById("movie-title")
-    var rating = document.getElementById("movie-rating")
-    var language = document.getElementById("language")
-    var cast = document.getElementById("actors")
-    var plot = document.getElementById("plot")
-    var resultButton = document.getElementById("result")
-
-    console.log("I am here")
-    pleaseWork.preventDefault();
-
-    localStorage.clear();
-    console.log(title)
-    console.log(rating)
-    console.log(title.innerHTML)
-
-    var movieInfo = {
-      title: title.innerHTML,
-      rating: rating.innerHTML,
-      language: language.innerHTML,
-      plot: plot.innerHTML,
-    };
-    console.log(movieInfo)
-    localStorage.setItem("titleInfo", JSON.stringify(title.innerHTML));
-    renderMessage();
-
-    localStorage.setItem("ratingInfo", JSON.stringify(rating.innerHTML));
-    renderMessage();
-    localStorage.setItem("languageInfo", JSON.stringify(language.innerHTML));
-    renderMessage();
-    localStorage.setItem("plotInfo", JSON.stringify(plot.innerHTML));
-    renderMessage();
-    }

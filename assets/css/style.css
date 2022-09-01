@@ -1,3 +1,37 @@
+#Movie-Title {
+  color: #000000;
+}
+#movie-rating {
+  color: #222222;
+}
+section {
+  color: #000000;
+}
+#first-column {
+  background-color: #ffffff;
+  border-left: 10px;
+}
+#second-column {
+  background-color: #ffffff;
+}
+#third-column {
+  background-color: #ffffff;
+}
+.columns {
+  column-gap: 1.75rem;
+  width:100%;
+  
+  margin: 10px 10px 10px 10px;
+  justify-content: center;
+}
+#test {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width:100%;
+}
 body { 
   background-color: #F7F9FD;
   background: url(https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
