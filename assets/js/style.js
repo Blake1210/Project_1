@@ -33,7 +33,7 @@ $(document).ready(function() {
                                 results += '<div class="rating-div" id="movie-rating"><span class="h4 rating">'+ (movieData.imdbRating) +'</span>/10</div>'
                                 results += '<div class="my-3">'
                                 results += '<div id="language">Language: '+ movieData.Language + '</div>'
-                                results += '<div id="actors">Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="#" id="button">Show All »</a></div>'
+                                results += '<div id="actors">Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="single-repo.html" id="button">Show All »</a></div>'
                                 results += '</div>'
                                 results += '<div class="my-3">'
                                 results += '<div id="plot">'+ movieData.Plot.slice(0, 100) + '... <a href="single-repo.html">Details »</a></div>'
