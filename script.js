@@ -1,4 +1,4 @@
-// 9:05
+
 $(document).ready(function() {
     function highlight(word, query) {
         let check = new RegExp(query, "ig")
