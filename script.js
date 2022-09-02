@@ -1,3 +1,9 @@
+// var movieInfo = {
+//     title: title.textContent,
+//     rating: rating.textContent,
+//     language: language.textContent,
+//     plot: plot.textContent,
+// };
 
 $(document).ready(function() {
     function highlight(word, query) {
