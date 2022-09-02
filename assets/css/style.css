@@ -1,22 +1,28 @@
 #Movie-Title {
   color: #000000;
 }
+
 #movie-rating {
   color: #222222;
 }
+
 section {
   color: #000000;
 }
+
 #first-column {
   background-color: #ffffff;
   border-left: 10px;
 }
+
 #second-column {
   background-color: #ffffff;
 }
+
 #third-column {
   background-color: #ffffff;
 }
+
 .columns {
   column-gap: 1.75rem;
   width:100%;
@@ -24,6 +30,7 @@ section {
   margin: 10px 10px 10px 10px;
   justify-content: center;
 }
+
 #test {
   margin: 0;
   position: absolute;
@@ -32,6 +39,7 @@ section {
   transform: translateY(-50%);
   width:100%;
 }
+
 body { 
   background-color: #F7F9FD;
   background: url(https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
@@ -41,6 +49,7 @@ body {
   height: 100vh;
   font-family:  sans-serif;
 }
+
 h3{
   color: rgb(185, 9, 9);
   border: 1px solid ;
@@ -50,6 +59,7 @@ h3{
   border: 1px solid rgb(98, 82, 82);
   font-family: cursive;
 }
+
 .border-padding {
   border: 1px solid #F1EEF2;
   -webkit-border-radius: 10px;
@@ -57,6 +67,7 @@ h3{
   border-radius: 10px;
   padding: 20px;
 }
+
 .search-input {
   width: 100%;
   height: 55px;
@@ -100,6 +111,7 @@ margin: auto -20px;
   left: 20%;
   margin-left: -19px;
 }
+
 #result-list:before {
   border-color: rgba(113, 158, 206, 0);
   border-bottom-color: #F1EEF2;
@@ -115,6 +127,7 @@ margin: auto -20px;
       color: #9B9B9B;
   }
 }
+
 .rating-div {
   color: #9B9B9B;
   .rating {
