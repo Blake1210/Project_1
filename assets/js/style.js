@@ -78,7 +78,7 @@ $(document).ready(function() {
                                 results += '<div class="col-sm-5" id="movie-poster"><img src=' + movieData.Poster + ' style="width: 170px; height: 250px;" /></div>'
                                 results += '<div class="col-sm-7 text-left">'
                                 results += '<div class="movie-title" id="movie-title">'+ highlight(movieData.Title, $(".search-input").val()) +' ('+ movieData.Year +')</div>'
-                                results += '<div class="rating-div" id="movie-rating"><span class="h4 rating">'+ movieData.imdbRating +'</span>/10</div>'
+                                results += '<div class="rating-div" id="movie-rating"><span class="h4 rating">'+ (movieData.imdbRating) +'</span>/10</div>'
                                 results += '<div class="my-3">'
                                 results += '<div id="language">Language: '+ movieData.Language + '</div>'
                                 results += '<div id="actors">Stars: '+ movieData.Actors.split(",").slice(0, 3) + ' | <a href="#" id="button">Show All »</a></div>'
@@ -175,7 +175,7 @@ function testing(pleaseWork) {
     console.log(title)
     console.log(rating)
     console.log(title.innerHTML)
-
+    
     var movieInfo = {
       title: title.innerHTML,
       rating: rating.innerHTML,
@@ -183,13 +183,7 @@ function testing(pleaseWork) {
       plot: plot.innerHTML,
     };
     console.log(movieInfo)
-    localStorage.setItem("titleInfo", JSON.stringify(title.innerHTML));
+    localStorage.setItem("movieInfo", JSON.stringify(movieInfo));
     renderMessage();
-
-    localStorage.setItem("ratingInfo", JSON.stringify(rating.innerHTML));
-    renderMessage();
-    localStorage.setItem("languageInfo", JSON.stringify(language.innerHTML));
-    renderMessage();
-    localStorage.setItem("plotInfo", JSON.stringify(plot.innerHTML));
-    renderMessage();
+    
     }
